@@ -26,7 +26,8 @@ setPlayers(                 //
 const deletePlayer = async (id)=>{
 const playersDoc = doc(db,"players",id)
 await deleteDoc (playersDoc)
-// getPlayers()
+//se actualiza si cargamos el componente y traemos registraos que estan en bbdd
+getPlayers()
     }
     //5 funcion para la confirmacion de sweet alert
     const confirmDelete=(id)=>{
@@ -58,10 +59,44 @@ await deleteDoc (playersDoc)
 
 
 // 7 devolvermos la vista de nuestro componente
-    return (
-        <> 
+return (
+    <> 
+<div className="container">
+    <div className="row">
+        <div className="col">
+            <div className="d-grid gap-2" >
+                <Link to="/create" className="btn btn-primary mt-2 mb-2 w-25">+ AGREGAR</Link>
+            </div>
+            <table class="table table-dark table-hover">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Numero</th>
+                    <th>Posicion</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {players.map((player)=>(
+                <tr key={player.id}>
+                <td>{player.name}</td>
+                <td>{player.lastName}</td>
+                <td>{player.number}</td>
+                <td>{player.position}</td>
+                <td>
+                    <Link to={`/edit/${player.id}`} className="btn btn-light mx-2"><i class="fa-solid fa-pencil"></i></Link>
+                    <button onClick={()=>{confirmDelete(player.id)}} className="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                </td>
+                </tr>
+                ))}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-        </>
-        )
+    </>
+    )
 
 }
