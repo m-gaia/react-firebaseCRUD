@@ -65,7 +65,7 @@ return (
     <div className="row">
         <div className="col">
             <div className="d-grid gap-2" >
-                <Link to="/create" className="btn btn-primary mt-2 mb-2 w-25">+ AGREGAR</Link>
+                <Link to="/create" className="btn btn-primary mt-1 mb-1 w-25">+ AGREGAR</Link>
             </div>
             <table class="table table-dark table-hover">
                 <thead>
